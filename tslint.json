@@ -1,0 +1,12 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["./node_modules/gts/tslint.json"],
+  "jsRules": {},
+  "rules": {
+    "eofline": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["dist/**/*.js", "**/*.js"]
+  }
+}
