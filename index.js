@@ -4,6 +4,11 @@ const solanaWeb3 = require('@solana/web3.js');
 const splToken = require('@solana/spl-token');
 const { pack } = require('@solana/spl-token-metadata');
 const bs58 = require('bs58').default;
+const { programs } = require('@metaplex/js');
+
+const {
+	metadata: { Metadata },
+} = programs;
 
 const connection = new solanaWeb3.Connection('https://solana-mainnet.core.chainstack.com/b490b7141d006a5b9f894cdc113e6150', {
 	wsEndpoint: 'wss://solana-mainnet.core.chainstack.com/b490b7141d006a5b9f894cdc113e6150',
@@ -115,13 +120,22 @@ async function transactionToken() {
 	console.log('signature', signature);
 }
 
+// Функция для получения метаданных
+async function getTokenMetadata(publicKey) {
+	let mintPubkey = new solanaWeb3.PublicKey(publicKey);
+	let token = await Metadata.getPDA(mintPubkey);
+	const tokenMeta = await Metadata.load(connection, token);
+	console.log('tokenMeta =>', tokenMeta.data.data);
+}
+
 // Главная функция для выполнения различных операций
 async function main() {
 	try {
-		 await getBalance(); // Проверка баланса на кошельке
+		// await getBalance(); // Проверка баланса на кошельке
 		// await mintSPL(); // Создание токена
 		// await mintSPLMetadata(); // Создание токена с метаданными
 		// await transactionToken(); // Перевод токенов на другой кошелек
+		await getTokenMetadata('DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263');
 	} catch (error) {
 		console.error(error);
 	}
