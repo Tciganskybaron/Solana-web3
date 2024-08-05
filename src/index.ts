@@ -1,11 +1,9 @@
 import * as solanaWeb3 from '@solana/web3.js';
-import {HTTPS_ENDPOINT, WSS_ENDPOINT, PRIVATE_KEY} from './config';
+import {HTTPS_ENDPOINT, PRIVATE_KEY} from './config';
 
 const bs58 = require('bs58').default;
 
-const connection = new solanaWeb3.Connection(HTTPS_ENDPOINT, {
-  wsEndpoint: WSS_ENDPOINT,
-});
+const connection = new solanaWeb3.Connection(HTTPS_ENDPOINT);
 
 const walletKeyPair = solanaWeb3.Keypair.fromSecretKey(
   new Uint8Array(bs58.decode(PRIVATE_KEY))
