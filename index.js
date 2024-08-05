@@ -42,5 +42,33 @@ async function mintSPL() {
 	return mint;
 }
 
+async function transactionToken() {
 
-const mintAddress = await mintSPL()
+const secondWalletPublicKey = new solanaWeb3.PublicKey(process.env.SECOND_WALLET_PUBLIC_KEY);
+
+const transaction = new solanaWeb3.Transaction().add(
+	solanaWeb3.SystemProgram.transfer({
+		fromPubkey: walletKeyPair.publicKey,
+		toPubkey: secondWalletPublicKey,
+		lamports: solanaWeb3.LAMPORTS_PER_SOL * 0.001,
+	})
+);
+console.log('transaction', transaction);
+
+const signature = await solanaWeb3.sendAndConfirmTransaction(connection, transaction, [walletKeyPair]);
+console.log("signature", signature)
+}
+
+
+
+async function main() {
+	try {
+		// await getBalance();
+		// await mintSPL();
+		// await transactionToken();
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+main();
