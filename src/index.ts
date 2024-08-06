@@ -1,12 +1,13 @@
-import * as solanaWeb3 from '@solana/web3.js';
+import {solanaWeb3, splToken, pack, TokenMetadata} from './import';
 import {
   HTTPS_ENDPOINT,
   PRIVATE_KEY,
   SECOND_WALLET_PUBLIC_KEY,
   WSS_ENDPOINT,
 } from './config';
-import {transactionToken} from './functions/transactionToken';
-import {getBalance} from './functions/getBalance';
+//import {transactionToken} from './functions/transactionToken';
+//import {getBalance} from './functions/getBalance';
+//import {mintSPLMetadata} from './functions/mintSPLMetadata';
 
 const bs58 = require('bs58').default;
 
@@ -22,13 +23,23 @@ const secondWalletPublicKey = new solanaWeb3.PublicKey(
   SECOND_WALLET_PUBLIC_KEY
 );
 
+const mintWallet = solanaWeb3.Keypair.generate();
+
+const metadata: TokenMetadata = {
+  mint: walletKeyPair.publicKey,
+  name: 'Boss on solanaWeb3',
+  symbol: 'BOSS',
+  uri: 'https://tomato-occupational-ape-835.mypinata.cloud/ipfs/QmPh1MdtWVMPwuEDCi9ibpRkrbnwU6zNZujf4XQe3n6kjF',
+  additionalMetadata: [['key', 'value']],
+};
+
 // Главная функция для выполнения различных операций
 async function main() {
   try {
-    const balance = await getBalance(connection, walletKeyPair); // Проверка баланса на кошельке
-    console.log('balance', balance);
+    // const balance = await getBalance(connection, walletKeyPair); // Проверка баланса на кошельке
+    // console.log('balance', balance);
     // await mintSPL(); // Создание токена
-    // await mintSPLMetadata(); // Создание токена с метаданными
+    // await mintSPLMetadata(metadata, connection, walletKeyPair, mintWallet); // Создание токена с метаданными
     // let data = await transactionToken(connection,walletKeyPair,secondWalletPublicKey); // Перевод токенов на другой кошелек
     // console.log("data =>", data)
     // await getTokenMetadata('DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263'); // Получение метаданных

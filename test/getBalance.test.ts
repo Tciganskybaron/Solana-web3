@@ -1,16 +1,19 @@
+/* eslint-disable n/no-unpublished-import */
 import bs58 from 'bs58';
 import dotenv from 'dotenv';
-import { describe, test, expect, jest } from '@jest/globals';
-import { getBalance } from '../src/functions/getBalance';
-import { solanaWeb3 } from '../src/import';
-import { HTTPS_ENDPOINT, PRIVATE_KEY } from '../src/config'
+import {describe, test, expect, jest} from '@jest/globals';
+import {getBalance} from '../src/functions/getBalance';
+import {solanaWeb3} from '../src/import';
+import {HTTPS_ENDPOINT, PRIVATE_KEY} from '../src/config';
 
 dotenv.config();
 
-const {Connection,Keypair} = solanaWeb3
+const {Connection, Keypair} = solanaWeb3;
 
 const mockConnection = new Connection(HTTPS_ENDPOINT);
-const mockKeypair = Keypair.fromSecretKey(new Uint8Array(bs58.decode(PRIVATE_KEY)));
+const mockKeypair = Keypair.fromSecretKey(
+  new Uint8Array(bs58.decode(PRIVATE_KEY))
+);
 
 describe('getBalance function', () => {
   beforeEach(() => {
@@ -26,9 +29,13 @@ describe('getBalance function', () => {
   });
 
   test('should handle connection errors gracefully', async () => {
-    jest.spyOn(mockConnection, 'getBalance').mockRejectedValue(new Error('Connection error'));
+    jest
+      .spyOn(mockConnection, 'getBalance')
+      .mockRejectedValue(new Error('Connection error'));
 
-    await expect(getBalance(mockConnection, mockKeypair)).rejects.toThrow('Connection error');
+    await expect(getBalance(mockConnection, mockKeypair)).rejects.toThrow(
+      'Connection error'
+    );
   });
 
   test('should correctly transform lamports to SOL', async () => {

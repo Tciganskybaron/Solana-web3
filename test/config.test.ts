@@ -1,3 +1,4 @@
+/* eslint-disable n/no-unpublished-import */
 import {describe, test, expect} from '@jest/globals';
 import {
   HTTPS_ENDPOINT,
@@ -29,7 +30,7 @@ describe('Correct env file', () => {
     expect(WSS_ENDPOINT).not.toBe('');
     expect(WSS_ENDPOINT).toMatch(/^wss?:\/\//); // Проверка, что это WebSocket URL
   });
-  
+
   // Проверка, что все значения являются строками
   test('All environment variables are strings', () => {
     expect(typeof HTTPS_ENDPOINT).toBe('string');
