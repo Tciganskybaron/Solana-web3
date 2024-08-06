@@ -25,3 +25,8 @@ export {
 export {pack, TokenMetadata} from '@solana/spl-token-metadata';
 import WebSocket from 'ws';
 export {WebSocket};
+
+import {Metadata, MetadataData} from '@metaplex-foundation/mpl-token-metadata';
+export {Metadata, MetadataData};
+const bs58 = require('bs58').default;
+export {bs58};
