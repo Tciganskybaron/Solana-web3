@@ -1,7 +1,10 @@
-import { solanaWeb3 } from '../import';
+import {solanaWeb3} from '../import';
 
 // Функция для проверки баланса на кошельке
-export async function getBalance(connection: solanaWeb3.Connection, walletKeyPair: solanaWeb3.Keypair): Promise<number> {
+export async function getBalance(
+  connection: solanaWeb3.Connection,
+  walletKeyPair: solanaWeb3.Keypair
+): Promise<number> {
   // Получение баланса в лампортах (малая единица SOL)
   const balance = await connection.getBalance(walletKeyPair.publicKey);
   // Конвертация баланса в SOL и вывод в консоль

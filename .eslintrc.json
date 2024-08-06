@@ -7,14 +7,5 @@
         "jest": true
       }
     }
-  ],
-  "rules": {
-    "n/no-unpublished-import": [
-      "error",
-      {
-        "allowModules": [],
-        "convertPath": null
-      }
-    ]
-  }
+  ]
 }

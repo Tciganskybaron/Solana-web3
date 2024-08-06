@@ -1,11 +1,10 @@
-import { solanaWeb3 } from '../import';
+import {solanaWeb3} from '../import';
 
 export async function transactionToken(
   connection: solanaWeb3.Connection,
   sourceWallet: solanaWeb3.Keypair,
   destinationWallet: solanaWeb3.PublicKey
 ) {
-
   const transaction = new solanaWeb3.Transaction().add(
     solanaWeb3.SystemProgram.transfer({
       fromPubkey: sourceWallet.publicKey,
@@ -19,6 +18,6 @@ export async function transactionToken(
     transaction,
     [sourceWallet]
   );
-  
+
   return [transaction, signature];
 }

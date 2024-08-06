@@ -4,11 +4,6 @@ const solanaWeb3 = require('@solana/web3.js');
 const splToken = require('@solana/spl-token');
 const {pack} = require('@solana/spl-token-metadata');
 const bs58 = require('bs58').default;
-const {programs} = require('@metaplex/js');
-
-const {
-  metadata: {Metadata},
-} = programs;
 
 const connection = new solanaWeb3.Connection(
   'https://solana-mainnet.core.chainstack.com/b490b7141d006a5b9f894cdc113e6150',
@@ -22,7 +17,6 @@ const walletKeyPair = solanaWeb3.Keypair.fromSecretKey(
   new Uint8Array(bs58.decode(process.env.PRIVATE_KEY))
 );
 const mintWallet = solanaWeb3.Keypair.generate();
-
 
 // Функция для создания токена с метаданными
 async function mintSPLMetadata() {
@@ -115,7 +109,6 @@ async function mintSPLMetadata() {
   );
   console.log('chainMetadata:', chainMetadata);
 }
-
 
 // Функция для перевода токенов на другой кошелек
 async function transactionToken() {
