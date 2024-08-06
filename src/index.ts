@@ -1,30 +1,38 @@
-import {solanaWeb3, splToken, pack, TokenMetadata} from './import';
+import {solanaWeb3, TokenMetadata} from './import';
 import {
   HTTPS_ENDPOINT,
   PRIVATE_KEY,
   SECOND_WALLET_PUBLIC_KEY,
   WSS_ENDPOINT,
 } from './config';
+
+//импорт функций
+//import { subscribeToEvents } from './functions/subscribeToEvents';
 //import {transactionToken} from './functions/transactionToken';
 //import {getBalance} from './functions/getBalance';
 //import {mintSPLMetadata} from './functions/mintSPLMetadata';
 
 const bs58 = require('bs58').default;
 
+// подключение к сети
 const connection = new solanaWeb3.Connection(HTTPS_ENDPOINT, {
   wsEndpoint: WSS_ENDPOINT,
 });
 
+// ключ для полаты
 const walletKeyPair = solanaWeb3.Keypair.fromSecretKey(
   new Uint8Array(bs58.decode(PRIVATE_KEY))
 );
 
+// ключ для получения переводов
 const secondWalletPublicKey = new solanaWeb3.PublicKey(
   SECOND_WALLET_PUBLIC_KEY
 );
 
+// случайные ключи
 const mintWallet = solanaWeb3.Keypair.generate();
 
+// метаданные для токена
 const metadata: TokenMetadata = {
   mint: walletKeyPair.publicKey,
   name: 'Boss on solanaWeb3',
@@ -43,7 +51,10 @@ async function main() {
     // let data = await transactionToken(connection,walletKeyPair,secondWalletPublicKey); // Перевод токенов на другой кошелек
     // console.log("data =>", data)
     // await getTokenMetadata('DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263'); // Получение метаданных
-    // subscribeToEvents(); // Подписка на события
+    // subscribeToEvents(
+    //   'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+    //   WSS_ENDPOINT
+    // ); // Подписка на события
   } catch (error) {
     console.error(error);
   }
