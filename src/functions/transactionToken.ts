@@ -1,4 +1,4 @@
-import * as solanaWeb3 from '@solana/web3.js';
+import { solanaWeb3 } from '../import';
 
 export async function transactionToken(
   connection: solanaWeb3.Connection,

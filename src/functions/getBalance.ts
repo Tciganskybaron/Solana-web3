@@ -1,4 +1,4 @@
-import * as solanaWeb3 from '@solana/web3.js';
+import { solanaWeb3 } from '../import';
 
 // Функция для проверки баланса на кошельке
 export async function getBalance(connection: solanaWeb3.Connection, walletKeyPair: solanaWeb3.Keypair): Promise<number> {

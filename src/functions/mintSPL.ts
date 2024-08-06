@@ -1,5 +1,4 @@
-import * as splToken from '@solana/spl-token';
-import * as solanaWeb3 from '@solana/web3.js';
+import { solanaWeb3, splToken } from '../import';
 
 export async function mintSPL(connection: solanaWeb3.Connection, walletKeyPair: solanaWeb3.Keypair):  Promise<(string | solanaWeb3.PublicKey | splToken.Account)[]> {
 	  const mint = await splToken.createMint(

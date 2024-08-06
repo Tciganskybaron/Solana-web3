@@ -2,10 +2,12 @@ import bs58 from 'bs58';
 import dotenv from 'dotenv';
 import { describe, test, expect, jest } from '@jest/globals';
 import { getBalance } from '../src/functions/getBalance';
-import { Connection, Keypair } from '@solana/web3.js';
+import { solanaWeb3 } from '../src/import';
 import { HTTPS_ENDPOINT, PRIVATE_KEY } from '../src/config'
 
 dotenv.config();
+
+const {Connection,Keypair} = solanaWeb3
 
 const mockConnection = new Connection(HTTPS_ENDPOINT);
 const mockKeypair = Keypair.fromSecretKey(new Uint8Array(bs58.decode(PRIVATE_KEY)));
@@ -19,7 +21,6 @@ describe('getBalance function', () => {
     const getBalanceSpy = jest.spyOn(mockConnection, 'getBalance');
 
     const balance = await getBalance(mockConnection, mockKeypair);
-    
     expect(getBalanceSpy).toHaveBeenCalledWith(mockKeypair.publicKey);
     expect(balance).toBeGreaterThanOrEqual(0);
   });
@@ -34,7 +35,6 @@ describe('getBalance function', () => {
     jest.spyOn(mockConnection, 'getBalance').mockResolvedValue(1000000000);
 
     const balance = await getBalance(mockConnection, mockKeypair);
-    
     expect(balance).toBe(1); // 1000000000 лампортов = 1 SOL
   });
 });
