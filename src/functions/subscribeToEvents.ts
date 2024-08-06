@@ -1,8 +1,8 @@
-import {solanaWeb3, WebSocket} from '../import';
+import {PublicKey, WebSocket} from '../import';
 
 export async function subscribeToEvents(tokenKey: string, wssUri: string) {
   // Публичный ключ программы токена USDC
-  const usdcProgramId = new solanaWeb3.PublicKey(tokenKey);
+  const usdcProgramId = new PublicKey(tokenKey);
 
   // Используем WebSocket для подписки на события программы
   const ws = new WebSocket(wssUri);

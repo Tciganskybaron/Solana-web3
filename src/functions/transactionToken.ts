@@ -1,23 +1,29 @@
-import {solanaWeb3} from '../import';
+import {
+  Connection,
+  Keypair,
+  Transaction,
+  PublicKey,
+  SystemProgram,
+  sendAndConfirmTransaction,
+  LAMPORTS_PER_SOL,
+} from '../import';
 
 export async function transactionToken(
-  connection: solanaWeb3.Connection,
-  sourceWallet: solanaWeb3.Keypair,
-  destinationWallet: solanaWeb3.PublicKey
+  connection: Connection,
+  sourceWallet: Keypair,
+  destinationWallet: PublicKey
 ) {
-  const transaction = new solanaWeb3.Transaction().add(
-    solanaWeb3.SystemProgram.transfer({
+  const transaction = new Transaction().add(
+    SystemProgram.transfer({
       fromPubkey: sourceWallet.publicKey,
       toPubkey: destinationWallet,
-      lamports: solanaWeb3.LAMPORTS_PER_SOL * 0.001,
+      lamports: LAMPORTS_PER_SOL * 0.001,
     })
   );
 
-  const signature = await solanaWeb3.sendAndConfirmTransaction(
-    connection,
-    transaction,
-    [sourceWallet]
-  );
+  const signature = await sendAndConfirmTransaction(connection, transaction, [
+    sourceWallet,
+  ]);
 
   return [transaction, signature];
 }

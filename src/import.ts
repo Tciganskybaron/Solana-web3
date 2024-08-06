@@ -1,5 +1,27 @@
-export * as solanaWeb3 from '@solana/web3.js';
-export * as splToken from '@solana/spl-token';
+export {
+  Connection,
+  Keypair,
+  PublicKey,
+  Transaction,
+  SystemProgram,
+  LAMPORTS_PER_SOL,
+  sendAndConfirmTransaction,
+} from '@solana/web3.js';
+export {
+  ExtensionType,
+  TYPE_SIZE,
+  LENGTH_SIZE,
+  TOKEN_2022_PROGRAM_ID,
+  createMint,
+  getOrCreateAssociatedTokenAccount,
+  mintTo,
+  getMintLen,
+  createInitializeMetadataPointerInstruction,
+  createInitializeMintInstruction,
+  createInitializeInstruction,
+  createUpdateFieldInstruction,
+  getTokenMetadata,
+} from '@solana/spl-token';
 export {pack, TokenMetadata} from '@solana/spl-token-metadata';
-import WebSocket = require('ws');
+import WebSocket from 'ws';
 export {WebSocket};
