@@ -10,7 +10,7 @@ import {
 //import { subscribeToEvents } from './functions/subscribeToEvents';
 //import {transactionToken} from './functions/transactionToken';
 //import {getBalance} from './functions/getBalance';
-//import {getMetadaToken} from './functions/getMetadata';
+//import {getMetadaToken} from './functions/getMetadataToken';
 //import {mintSPLMetadata} from './functions/mintSPLMetadata';
 
 // подключение к сети
