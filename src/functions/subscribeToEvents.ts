@@ -1,6 +1,9 @@
 import {PublicKey, WebSocket} from '../import';
 
-export async function subscribeToEvents(tokenKey: string, wssUri: string) {
+export async function subscribeToEvents(
+  tokenKey: string,
+  wssUri: string
+): Promise<void> {
   // Публичный ключ программы токена USDC
   const usdcProgramId = new PublicKey(tokenKey);
 

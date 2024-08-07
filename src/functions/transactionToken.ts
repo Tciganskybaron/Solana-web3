@@ -12,7 +12,7 @@ export async function transactionToken(
   connection: Connection,
   sourceWallet: Keypair,
   destinationWallet: PublicKey
-) {
+): Promise<(string | Transaction)[]> {
   const transaction = new Transaction().add(
     SystemProgram.transfer({
       fromPubkey: sourceWallet.publicKey,
