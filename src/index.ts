@@ -7,10 +7,10 @@ import {
 } from './config';
 
 //импорт функций
-//import { subscribeToEvents } from './functions/subscribeToEvents';
+//import {getMetadaToken} from './functions/getMetadataToken';
+//import {subscribeToEvents} from './functions/subscribeToEvents';
 //import {transactionToken} from './functions/transactionToken';
 //import {getBalance} from './functions/getBalance';
-//import {getMetadaToken} from './functions/getMetadataToken';
 //import {mintSPLMetadata} from './functions/mintSPLMetadata';
 
 // подключение к сети
@@ -37,7 +37,6 @@ const metadata: TokenMetadata = {
   uri: 'https://tomato-occupational-ape-835.mypinata.cloud/ipfs/QmPh1MdtWVMPwuEDCi9ibpRkrbnwU6zNZujf4XQe3n6kjF',
   additionalMetadata: [['key', 'value']],
 };
-// '9MwGzSyuQRqmBHqmYwE6wbP3vzRBj4WWiYxWns3rkR7A'
 
 // Главная функция для выполнения различных операций
 async function main() {
@@ -45,10 +44,10 @@ async function main() {
     // const balance = await getBalance(connection, walletKeyPair); // Проверка баланса на кошельке
     // console.log('balance', balance);
     // const data = await getMetadaToken(
-    //   '9MwGzSyuQRqmBHqmYwE6wbP3vzRBj4WWiYxWns3rkR7A',
-    //   connection
+    //   HTTPS_ENDPOINT,
+    //   '9MwGzSyuQRqmBHqmYwE6wbP3vzRBj4WWiYxWns3rkR7A'
     // );
-    // console.log('data =>', data);
+    // console.log('data', data);
     // await mintSPL(); // Создание токена
     // await mintSPLMetadata(metadata, connection, walletKeyPair, mintWallet); // Создание токена с метаданными
     // let data = await transactionToken(connection,walletKeyPair,secondWalletPublicKey); // Перевод токенов на другой кошелек
