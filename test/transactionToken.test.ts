@@ -9,7 +9,8 @@ import {
   Transaction,
 } from '@solana/web3.js';
 import {transactionToken} from '../src/functions/transactionToken';
-import bs58 from 'bs58';
+import {bs58} from '../src/import';
+
 import {
   HTTPS_ENDPOINT,
   PRIVATE_KEY,
