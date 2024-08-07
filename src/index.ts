@@ -7,7 +7,7 @@ import {
 } from './config';
 
 //импорт функций
-//import {getMetadaToken} from './functions/getMetadataToken';
+import {getMetadaToken} from './functions/getMetadataToken';
 //import {subscribeToEvents} from './functions/subscribeToEvents';
 //import {transactionToken} from './functions/transactionToken';
 //import {getBalance} from './functions/getBalance';
@@ -43,11 +43,11 @@ async function main() {
   try {
     // const balance = await getBalance(connection, walletKeyPair); // Проверка баланса на кошельке
     // console.log('balance', balance);
-    // const data = await getMetadaToken(
-    //   HTTPS_ENDPOINT,
-    //   '9MwGzSyuQRqmBHqmYwE6wbP3vzRBj4WWiYxWns3rkR7A'
-    // );
-    // console.log('data', data);
+    const data = await getMetadaToken(
+      HTTPS_ENDPOINT,
+      '9MwGzSyuQRqmBHqmYwE6wbP3vzRBj4WWiYxWns3rkR7A'
+    );
+    console.log('data', data);
     // await mintSPL(); // Создание токена
     // await mintSPLMetadata(metadata, connection, walletKeyPair, mintWallet); // Создание токена с метаданными
     // let data = await transactionToken(connection,walletKeyPair,secondWalletPublicKey); // Перевод токенов на другой кошелек

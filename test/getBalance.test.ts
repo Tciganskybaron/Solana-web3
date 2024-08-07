@@ -1,6 +1,6 @@
 /* eslint-disable n/no-unpublished-import */
 import bs58 from 'bs58';
-import {describe, test, expect, jest, it} from '@jest/globals';
+import {describe, test, expect, jest} from '@jest/globals';
 import {getBalance} from '../src/functions/getBalance';
 import {Connection, Keypair} from '../src/import';
 import {HTTPS_ENDPOINT, PRIVATE_KEY} from '../src/config';
